@@ -13,10 +13,10 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-public class XMLFileHandler implements MyFileHandler{
+public class XMLFileHandler implements MyFileHandler, MyConstants, FilePath{
     public void read(){
         try {
-            File xmlFile = new File("/Users/pranavkelkar/Downloads/employee.xml");
+            File xmlFile = new File(INPUTPATH +".xml");
 
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
             DocumentBuilder db = dbf.newDocumentBuilder();
@@ -27,7 +27,7 @@ public class XMLFileHandler implements MyFileHandler{
             MyCollection myCollection = MyCollection.getInstance();
 
             //todo : change the logic to read till the end of the file
-            for(int itr=0;itr<100;itr++){
+            for(int itr=0;itr<WRITE_MAX_VALUE;itr++){
                 Node node = nodeList.item(itr);
                 Employee emp=new Employee();
 
@@ -63,7 +63,7 @@ public class XMLFileHandler implements MyFileHandler{
             Employee emp;
 
             //todo : define 100 as a constant
-            for(int writeItr=0;writeItr<100;writeItr++){
+            for(int writeItr=0;writeItr<WRITE_MAX_VALUE;writeItr++){
                 emp = x1.get();
 
                 //todo : need to look at the logic .. values are getting appended
@@ -89,7 +89,7 @@ public class XMLFileHandler implements MyFileHandler{
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource domSource = new DOMSource(doc);
-            StreamResult streamResult = new StreamResult(new File("/Users/pranavkelkar/Downloads/GENemployee.xml"));
+            StreamResult streamResult = new StreamResult(new File(OUTPUTPATH +".xml"));
             transformer.transform(domSource, streamResult);
 
         }

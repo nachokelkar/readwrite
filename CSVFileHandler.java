@@ -5,14 +5,14 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 import com.opencsv.*;
 
-public class CSVFileHandler implements MyFileHandler{
+public class CSVFileHandler implements MyFileHandler, FilePath{
     public void read() {
         Scanner scanner = null;
         //todo : change the name of the collection
-        MyCollection instance = MyCollection.getInstance();
+        MyCollection collectionInstance = MyCollection.getInstance();
 
         try {
-            scanner = new Scanner(new File("/Users/pranavkelkar/Downloads/employee.csv"));
+            scanner = new Scanner(new File(INPUTPATH +".csv"));
             Scanner dataScanner = null;
             int index = 0;
             while (scanner.hasNextLine()) {
@@ -36,8 +36,8 @@ public class CSVFileHandler implements MyFileHandler{
                     index++;
                 }
 
-                instance.add(emp);
-                instance.incrementRead();
+                collectionInstance.add(emp);
+                collectionInstance.incrementRead();
 
                 index = 0;
             }
@@ -48,7 +48,7 @@ public class CSVFileHandler implements MyFileHandler{
     }
 
     public void write(){
-        File file = new File("/Users/pranavkelkar/Downloads/GENemployee.csv");
+        File file = new File(OUTPUTPATH +".csv");
         try {
             FileWriter outputfile = new FileWriter(file);
             CSVWriter writer = new CSVWriter(outputfile);

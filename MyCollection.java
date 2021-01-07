@@ -1,7 +1,6 @@
 package readwrite;
 
-public class MyCollection {
-
+public class MyCollection implements MyConstants{
     private static int readCounter;
     private static int writeCounter;
     private Employee[] collection;
@@ -12,7 +11,7 @@ public class MyCollection {
     private MyCollection(){
         readCounter = 0;
         writeCounter = 0;
-        collection = new Employee[300];
+        collection = new Employee[COLLECTION_MAX_SIZE];
         top = 0;
     }
 
@@ -38,7 +37,7 @@ public class MyCollection {
     }
 
     public void add(Employee record) throws CollectionException{
-        if(top>=300){
+        if(top>=COLLECTION_MAX_SIZE){
             throw new CollectionException("Collection limit reached");
         }
 

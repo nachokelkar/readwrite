@@ -10,15 +10,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
 
-public class JSONFileHandler implements MyFileHandler{
+public class JSONFileHandler implements MyFileHandler, MyConstants, FilePath {
 
     public void write(){
         try {
-            FileWriter file = new FileWriter("/Users/pranavkelkar/Downloads/GENemployee.json");
+            FileWriter file = new FileWriter(OUTPUTPATH +".json");
             MyCollection instance = MyCollection.getInstance();
             Employee emp;
 
-            for(int i=0;i<100;i++) {
+            for(int i=0;i<WRITE_MAX_VALUE;i++) {
                 try {
                     emp = instance.get();
                     JSONObject obj = new JSONObject();
@@ -48,7 +48,7 @@ public class JSONFileHandler implements MyFileHandler{
     {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
-        try (FileReader reader = new FileReader("/Users/pranavkelkar/Downloads/employee.json"))
+        try (FileReader reader = new FileReader(INPUTPATH +".json"))
         {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
