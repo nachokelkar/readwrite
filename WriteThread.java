@@ -1,4 +1,4 @@
-package read-write;
+package readwrite;
 
 public class WriteThread extends Thread {
     private MyFileHandler fileHandler;

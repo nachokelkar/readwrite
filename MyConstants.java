@@ -1,4 +1,4 @@
-package read-write;
+package readwrite;
 
 public interface MyConstants {
     int COLLECTION_MAX_SIZE=300;

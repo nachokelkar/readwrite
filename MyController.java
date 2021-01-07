@@ -1,4 +1,4 @@
-package read-write;
+package readwrite;
 
 public class MyController {
     public static void main(String[] args) {

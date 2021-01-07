@@ -1,3 +1,5 @@
+package readwrite;
+
 public class MyCollection {
 
     private static int readCounter;

@@ -1,4 +1,4 @@
-package read-write;
+package readwrite;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;

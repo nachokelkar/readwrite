@@ -1,4 +1,4 @@
-package read-write;
+package readwrite;
 
 import java.util.Date ;
 
